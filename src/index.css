@@ -1,0 +1,181 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #272923;
+  background: #F5F3ED;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: #D96B45;
+  color: white;
+}
+
+
+/* =====================================
+   LINKSPHERE QR CODE DESIGN
+===================================== */
+
+.link-card-actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.qr-generator {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.qr-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid rgba(205, 111, 76, 0.35);
+  border-radius: 9px;
+  background: rgba(205, 111, 76, 0.09);
+  color: #d47b59;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qr-toggle-btn:hover {
+  background: #c96d4d;
+  color: #fff;
+  border-color: #c96d4d;
+  transform: translateY(-1px);
+}
+
+.qr-code-panel {
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  background: #fffaf5;
+  border: 1px solid #eaded2;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+  animation: qrAppear 0.25s ease;
+}
+
+.qr-code-panel h4 {
+  margin: 0;
+  color: #302923;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.qr-code-image {
+  display: block;
+  width: 190px;
+  height: 190px;
+  object-fit: contain;
+  padding: 9px;
+  background: #fff;
+  border: 1px solid #eee5dc;
+  border-radius: 10px;
+}
+
+.qr-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 9px;
+  background: #c96d4d;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.qr-download-btn:hover {
+  background: #ae573b;
+  transform: translateY(-1px);
+}
+
+@keyframes qrAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode */
+
+.dark-theme .qr-code-panel {
+  background: #242522;
+  border-color: #41413b;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dark-theme .qr-code-panel h4 {
+  color: #f1e9df;
+}
+
+.dark-theme .qr-code-image {
+  border-color: #e8e0d7;
+  background: #fff;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .link-card-actions {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 14px;
+  }
+
+  .qr-generator {
+    align-items: flex-start;
+  }
+
+  .qr-code-panel {
+    width: min(250px, calc(100vw - 70px));
+  }
+}
