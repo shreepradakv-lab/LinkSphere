@@ -2521,3 +2521,48 @@
   }
 }
 
+
+/* LinkSphere delete link action */
+
+.delete-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid rgba(190, 75, 65, 0.2);
+  border-radius: 8px;
+  background: transparent;
+  color: #bd5b50;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-link-button:hover:not(:disabled) {
+  background: rgba(190, 75, 65, 0.09);
+  border-color: #bd5b50;
+}
+
+.delete-link-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dark-theme .delete-link-button {
+  color: #e18a7e;
+  border-color: rgba(225, 138, 126, 0.25);
+}
+
+.dark-theme .delete-link-button:hover:not(:disabled) {
+  background: rgba(225, 138, 126, 0.12);
+}
+
+@media (max-width: 600px) {
+  .link-card-actions {
+    flex-wrap: wrap;
+  }
+}
+
