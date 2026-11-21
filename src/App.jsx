@@ -1,11 +1,16 @@
 
 import { useState } from "react";
-import { ArrowDown, Link2 } from "lucide-react";
+import {
+  ArrowDown,
+  Link2
+} from "lucide-react";
 
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import UrlShortener from "./components/UrlShortener";
 import LinkManager from "./components/LinkManager";
+import Analytics from "./components/AnalyticsChart";
+import HeroArtwork from "./components/HeroArtwork";
 
 import "./App.css";
 
@@ -31,7 +36,10 @@ function App() {
 
   return (
     <div className={`app-layout ${isDark ? "dark-theme" : ""}`}>
-      <Sidebar active={active} setActive={setActive} />
+      <Sidebar
+        active={active}
+        setActive={setActive}
+      />
 
       <main className="main-area">
         <Header
@@ -41,89 +49,133 @@ function App() {
         />
 
         <section className="dashboard-content">
-          {/* Welcome Section */}
-          <div className="welcome-row">
-            <div>
-              <div className="eyebrow">
-                <span className="live-dot" />
-                YOUR LINK WORKSPACE
+
+          {/* OVERVIEW PAGE */}
+          {active === "Overview" && (
+            <>
+              {/* HERO SECTION */}
+              <div className="welcome-row">
+                <div>
+                  <div className="eyebrow">
+                    <span className="live-dot" />
+                    YOUR LINK WORKSPACE
+                  </div>
+
+                  <h1>
+                    Make every link
+                    <br />
+                    <span>go further.</span>
+                  </h1>
+
+                  <p className="welcome-description">
+                    One space to shorten, manage and understand
+                    everything you share.
+                  </p>
+
+                  <div className="hero-caption">
+                    <span className="hero-caption-line" />
+                    <span>SHORTEN. SHARE. CONNECT.</span>
+                  </div>
+                </div>
+
+                {/* ANIMATED HERO ILLUSTRATION */}
+                <HeroArtwork />
               </div>
 
-              <h1>
-                Make every link
-                <br />
-                <span>go further.</span>
-              </h1>
+              {/* URL SHORTENER */}
+              <section className="create-section">
+                <div className="section-heading">
+                  <div>
+                    <span className="section-number">
+                      01 / CREATE
+                    </span>
 
-              <p className="welcome-description">
-                One space to shorten, manage and understand
-                everything you share.
-              </p>
-            </div>
+                    <h2>Shorten a link</h2>
+                  </div>
 
-            <div className="date-note">
-              <span>LINKSPHERE / 001</span>
-              <div>Share with purpose.</div>
-            </div>
-          </div>
+                  <div className="secure-label">
+                    <span>✦</span>
+                    Simple. Fast. Secure.
+                  </div>
+                </div>
 
-          {/* URL Shortener */}
-          <section className="create-section">
-            <div className="section-heading">
-              <div>
-                <span className="section-number">
-                  01 / CREATE
-                </span>
-                <h2>Shorten a link</h2>
+                <UrlShortener />
+              </section>
+
+              {/* OVERVIEW SECTION */}
+              <section className="overview-section">
+                <div className="section-heading">
+                  <div>
+                    <span className="section-number">
+                      02 / OVERVIEW
+                    </span>
+
+                    <h2>Your link activity</h2>
+                  </div>
+
+                  <span className="period-label">
+                    <ArrowDown size={14} />
+                    All time
+                  </span>
+                </div>
+
+                <div className="empty-state">
+                  <div className="empty-icon">
+                    <Link2 size={25} />
+                  </div>
+
+                  <h3>Your links will live here.</h3>
+
+                  <p>
+                    Create and manage your shortened URLs
+                    using the My Links section.
+                    Visit Analytics to understand their performance.
+                  </p>
+                </div>
+              </section>
+            </>
+          )}
+
+          {/* MY LINKS PAGE */}
+          {active === "My links" && (
+            <LinkManager />
+          )}
+
+          {/* ANALYTICS PAGE */}
+          {active === "Analytics" && (
+            <Analytics />
+          )}
+
+          {/* SETTINGS PAGE */}
+          {active === "Settings" && (
+            <section className="overview-section">
+              <div className="section-heading">
+                <div>
+                  <span className="section-number">
+                    WORKSPACE
+                  </span>
+
+                  <h2>Settings</h2>
+                </div>
               </div>
 
-              <div className="secure-label">
-                <span>✦</span>
-                Simple. Fast. Secure.
+              <div className="empty-state">
+                <h3>Workspace settings</h3>
+
+                <p>
+                  Use the theme control in the header
+                  to switch between light and dark mode.
+                </p>
               </div>
-            </div>
+            </section>
+          )}
 
-            <UrlShortener />
-          </section>
-
-          {/* Overview Section */}
-          <section className="overview-section">
-            <div className="section-heading">
-              <div>
-                <span className="section-number">
-                  02 / OVERVIEW
-                </span>
-                <h2>Your link activity</h2>
-              </div>
-
-              <span className="period-label">
-                <ArrowDown size={14} />
-                All time
-              </span>
-            </div>
-
-            <div className="empty-state">
-              <div className="empty-icon">
-                <Link2 size={25} />
-              </div>
-
-              <h3>Your links will live here.</h3>
-
-              <p>
-                Create your first short link to start building
-                your collection and tracking its activity.
-              </p>
-            </div>
-          </section>
-
-          {/* Link Management Section */}
-          <LinkManager />
-
-          {/* Footer */}
+          {/* FOOTER */}
           <footer className="dashboard-footer">
             <span>LINKSPHERE © 2026</span>
             <span>Built for better sharing.</span>
           </footer>
+
         </section>
       </main>
     </div>
