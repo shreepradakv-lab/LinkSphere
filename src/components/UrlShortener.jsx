@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import { supabase } from "../lib/supabase";
+import QRCodeGenerator from "./QRCodeGenerator";
 
 function UrlShortener() {
   const [url, setUrl] = useState("");
@@ -282,6 +283,11 @@ function UrlShortener() {
               Stored in Supabase
             </span>
           </div>
+          <QRCodeGenerator
+  shortUrl={result.shortUrl}
+  autoOpen={true}
+/>
+
         </div>
       )}
     </>
